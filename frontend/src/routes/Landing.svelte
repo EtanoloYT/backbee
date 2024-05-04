@@ -9,9 +9,9 @@
     <img src="../backbee.png" alt="logo" class="w-44 rounded-lg" />
   </div>
   <nav class="flex justify-evenly items-center w-1/2">
-    <Link to="/" class="navlink text-black text-lg">Home</Link>
-    <Link to="/features" class="navlink text-black text-lg">Features</Link>
-    <Link to="/services" class="navlink text-black text-lg">Services</Link>
+    <Link to="/" class="navlink text-black hover:text-black text-lg">Home</Link>
+    <Link to="/features" class="navlink text-black hover:text-black text-lg">Features</Link>
+    <Link to="/services" class="navlink text-black hover:text-black text-lg">Services</Link>
   </nav>
   <div class="auth">
     <Link
@@ -30,7 +30,7 @@
 <main>
   <section class="hero h-screen w-full p-16">
     <div class="hero-content flex flex-col h-2/3 w-1/2 justify-end mb-4">
-      <h1 class="hero-title text-6xl font-bold leading-snug">
+      <h1 class="hero-title lg:text-6xl font-bold leading-snug">
         BackBee lets you focus on your <span class="highlight">APP</span>, we
         take care of the rest
       </h1>
@@ -38,11 +38,11 @@
         We provide a simple and easy way to manage your app's backend whitout
         the need to write a single line of code
       </p>
-      <img src="../blob.svg" alt="" class="blob absolute right-40 top-1/4" />
+      <img src="../blob.svg" alt="" class="blob absolute right-0 top-24 w-1/2" />
     </div>
     <Link
       to="/register"
-      class="px-4 py-3 text-white bg-primary rounded-lg text-lg mx-2 hover:bg-accent hover:text-white transition-all"
+      class="px-4 py-3 text-white bg-primary rounded-lg text-lg mr-2 hover:bg-accent hover:text-white transition-all"
       >Get Started</Link
     >
     <Link
@@ -93,31 +93,11 @@
   @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
 
   header {
-    background-color: #fff1c2;
     z-index: 1000;
-  }
-
-  .button {
-    margin-right: 1rem;
   }
 
   .hero-content {
     color: black;
-  }
-
-  .button-primary {
-    background-color: #ffc60a;
-    color: white;
-  }
-
-  .button {
-    padding: 0.5rem 1rem;
-    color: black;
-    border-radius: 5px;
-    text-decoration: none;
-    border: 2px solid #ffcf33;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
   }
 
   .highlight {
@@ -125,24 +105,8 @@
     filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.15));
   }
 
-  .hero .button {
-    padding: 0.8rem 1.4rem;
-    font-size: 1.2rem;
-  }
-
-  .hero .button-primary {
-    background-color: #ffc60a;
-    color: white;
-  }
-
-  .button:hover {
-    background-color: #ffcf33;
-    color: white;
-  }
-
   .blob {
     filter: blur(60px);
-    transform: scale(1.2);
   }
 
   h1 {
@@ -155,7 +119,6 @@
   }
 
   .feature {
-    background-color: #fff1c2;
     border: 2px solid #ffcf33;
     transition: all 0.3s ease;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
