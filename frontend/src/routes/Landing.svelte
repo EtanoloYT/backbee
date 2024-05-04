@@ -1,4 +1,5 @@
 <script>
+  import { Link } from "svelte-routing";
 </script>
 
 <header
@@ -8,13 +9,21 @@
     <img src="../backbee.png" alt="logo" class="w-44 rounded-lg" />
   </div>
   <nav class="flex justify-evenly items-center w-1/2">
-    <a href="/" class="navlink">Home</a>
-    <a href="/about" class="navlink">About</a>
-    <a href="/contact" class="navlink">Contact</a>
+    <Link to="/" class="navlink text-black text-lg">Home</Link>
+    <Link to="/features" class="navlink text-black text-lg">Features</Link>
+    <Link to="/services" class="navlink text-black text-lg">Services</Link>
   </nav>
   <div class="auth">
-    <a href="/login" class="button button-primary">Login</a>
-    <a href="/register" class="button">Register</a>
+    <Link
+      to="/login"
+      class="px-4 py-3 text-white bg-primary rounded-lg text-lg mx-2 hover:bg-accent hover:text-white transition-all"
+      >Login</Link
+    >
+    <Link
+      to="/register"
+      class="px-4 py-3 text-black bg-white border-accent border-2 rounded-lg text-lg mx-2 hover:bg-accent hover:text-white transition-all"
+      >Register</Link
+    >
   </div>
 </header>
 
@@ -31,8 +40,16 @@
       </p>
       <img src="../blob.svg" alt="" class="blob absolute right-40 top-1/4" />
     </div>
-    <a href="/register" class="button button-primary">Get Started</a>
-    <a href="/login" class="button">Discover More</a>
+    <Link
+      to="/register"
+      class="px-4 py-3 text-white bg-primary rounded-lg text-lg mx-2 hover:bg-accent hover:text-white transition-all"
+      >Get Started</Link
+    >
+    <Link
+      to="/features"
+      class="px-4 py-3 text-black bg-white border-accent border-2 rounded-lg text-lg mx-2 hover:bg-accent hover:text-white transition-all"
+      >Discorver More</Link
+    >
     <div
       class="absolute w-full flex items-center justify-center bottom-10 left-0 pointer-events-none animate-bounce"
     >
@@ -80,18 +97,6 @@
     z-index: 1000;
   }
 
-  .navlink {
-    color: black;
-    text-decoration: none;
-    font-size: 18px;
-    transition: all 0.3s ease;
-  }
-
-  .navlink:hover {
-    text-decoration: underline;
-  }
-
-  .auth a,
   .button {
     margin-right: 1rem;
   }

@@ -1,9 +1,15 @@
 <script>
-  import { onMount } from "svelte";
-  import Landing from "./lib/Landing.svelte";
+  import { Router, Link, Route } from "svelte-routing";
+  import Landing from "./routes/Landing.svelte";
+  import Login from "./routes/Login.svelte";
+
+  let url;
 </script>
 
-<Landing />
+<Router {url}>
+  <Route path="/" component={Landing} />
+  <Route path="/login" component={Login} />
+</Router>
 
 <style>
 </style>
