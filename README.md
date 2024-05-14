@@ -8,20 +8,22 @@ Backend as a Service demo with authentication and DB
 
 ## Roadmap
 
-- Day 1: Project definition
-- Day 2: Design user interface mockups
-- Day 3: Build landing page and subscriptions
-- Day 4: Build authentication
-- Day 5: Implement other authentication services
-- Day 6: Set up database and dashboard
-- Day 7: Polish and deploy
+- Step 1: Project definition _Done_
+- Step 2: Design user interface mockups _Done_
+- Step 3: Build landing page and subscriptions _Done_
+- Step 4: Build authentication
+- Step 5: Implement other authentication services
+- Step 6: Set up database and dashboard
+- Step 7: Polish and deploy
+
+Went way off schedule, but it's all good. Still doing the best I can.
 
 
 ## Tech Stack
 
-**Client:** Svelte, TailwindCSS, DaisyUI
+**Client:** Svelte, TailwindCSS
 
-**Server:** Laravel
+**Server:** Laravel, Node
 
 **Database:** MariaDB, MongoDB
 

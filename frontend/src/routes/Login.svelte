@@ -1,7 +1,7 @@
 <script>
     import { Link } from "svelte-routing";
     import App from "../App.svelte";
-    import Landing from "./Landing.svelte";
+    import Landing from "./Landingg.svelte";
 </script>
 
 <section class="bg-primary">

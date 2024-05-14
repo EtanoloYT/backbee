@@ -1,215 +1,382 @@
 <script>
-  import { Link } from "svelte-routing";
 
-  let collections = [
-    {
-      name: "Users",
-      description: "Collection of all users",
-      fields: [
-        {
-          name: "Name",
-          type: "String",
-          required: true,
-        },
-        {
-          name: "Email",
-          type: "String",
-          required: true,
-        },
-        {
-          name: "Password",
-          type: "String",
-          required: true,
-        },
-      ],
-      data: [
-        {
-          name: "John Doe",
-          email: "johndoe@mail.com",
-          password: "password",
-        },
-        {
-          name: "Jane Doe",
-          email: "janedoe@mail.com",
-          password: "password2",
-        },
-        {
-          name: "John Smith",
-          email: "john@caca.com",
-          password: "password3",
-        },
-      ],
-    },
-    {
-      name: "Products",
-      description: "Collection of all products",
-      fields: [
-        {
-          name: "Name",
-          type: "String",
-          required: true,
-        },
-        {
-          name: "Price",
-          type: "Number",
-          required: true,
-        },
-        {
-          name: "Description",
-          type: "String",
-          required: true,
-        },
-      ],
-      data: [
-        {
-          name: "Product 1",
-          price: 100,
-          description: "Product 1 description",
-        },
-        {
-          name: "Product 2",
-          price: 200,
-          description: "Product 2 description",
-        },
-        {
-          name: "Product 3",
-          price: 300,
-          description: "Product 3 description",
-        },
-      ],
-    },
-    {
-      name: "Orders",
-      data: [],
-    },
-  ];
-
-  let collection = collections[0];
 </script>
-
-<div class="flex">
-  <aside class="h-screen w-24 border-r-2">
-    <div class="flex flex-col items-center justify-between h-full mx-auto py-8">
-      <Link
-        to="/"
-        class="flex items-center text-2xl font-semibold text-gray-900"
-      >
-        <h1 class="text-2xl">BB</h1>
-      </Link>
-      <nav class="flex flex-col items-center justify-between h-1/3 w-full">
-        <Link
-          to="/"
-          class="navlink text-black hover:text-black text-lg border-2 p-1 rounded-lg border-black"
-        >
-          <img src="../icons/database.svg" alt="" class="w-8" />
-        </Link>
-        <Link
-          to="/features"
-          class="navlink text-black hover:text-black text-lg"
-        >
-          <img src="../icons/analytics.svg" alt="" class="w-8" />
-        </Link>
-        <Link
-          to="/services"
-          class="navlink text-black hover:text-black text-lg"
-        >
-          <img src="../icons/folder.svg" alt="" class="w-8" />
-        </Link>
-      </nav>
-      <Link to="/settings" class="navlink text-black hover:text-black text-lg">
-        <img src="../icons/cog.svg" alt="" class="w-8" />
-      </Link>
+<div class="flex flex-col w-full min-h-screen">
+  <header class="flex items-center h-16 px-4 border-b shrink-0 md:px-6">
+    <a class="flex items-center gap-2 text-lg font-semibold md:text-base" href="#">
+      <div class="logo">
+        <img src="../backbee.png" alt="logo" class="w-44 rounded-lg" />
+      </div>
+    </a>
+    <nav class="hidden font-medium sm:flex flex-row items-center gap-5 text-sm lg:gap-6 ml-auto">
+      <a class="text-gray-500 dark:text-gray-400" href="#">
+        Dashboard
+      </a>
+      <a class="text-gray-500 dark:text-gray-400" href="#">
+        API
+      </a>
+      <a class="text-gray-500 dark:text-gray-400" href="#">
+        Storage
+      </a>
+      <a class="text-gray-500 dark:text-gray-400" href="#">
+        Billing
+      </a>
+      <a class="text-gray-500 dark:text-gray-400" href="#">
+        Settings
+      </a>
+    </nav>
+    <div class="flex items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
+      <button class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 w-10 rounded-full">
+        <img
+          src="../icons/user.svg"
+          width="32"
+          height="32"
+          class="rounded-full"
+          alt="Avatar"
+          style="aspect-ratio: 32 / 32; object-fit: cover;"
+        />
+        <span class="sr-only">Toggle user menu</span>
+      </button>
     </div>
-  </aside>
-  <aside class="w-60 border-r-2 max-h-screen py-8 flex flex-col">
-    <div class="w-will flex items-center justify-center flex-col">
-      <h2 class="text-lg text-gray-500">Collections</h2>
-      <div class="collections flex flex-col w-full">
-        {#each collections as coll}
-          <button
-            class="w-full text-left bg-white border-b border-b-gray-200 p-4 hover:bg-primary"
-            on:click={() => (collection = coll)}
+  </header>
+  <div class="flex flex-1">
+    <div class="hidden lg:block w-[280px] bg-gray-100 dark:bg-gray-800 border-r">
+      <div class="flex flex-col h-full gap-4 p-4">
+        <div class="font-semibold text-lg">Platform</div>
+        <nav class="grid gap-2">
+          <a
+            class="flex items-center gap-2 px-3 py-2 rounded-md text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50 transition-colors"
+            href="#"
           >
-            <h3 class="text-gray-900">{coll.name}</h3>
-          </button>
-        {/each}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="w-5 h-5"
+            >
+              <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+              <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
+              <path d="M3 12A9 3 0 0 0 21 12"></path>
+            </svg>
+            Database
+          </a>
+          <a
+            class="flex items-center gap-2 px-3 py-2 rounded-md text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50 transition-colors"
+            href="#"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="w-5 h-5"
+            >
+              <circle cx="7.5" cy="15.5" r="5.5"></circle>
+              <path d="m21 2-9.6 9.6"></path>
+              <path d="m15.5 7.5 3 3L22 7l-3-3"></path>
+            </svg>
+            Authentication
+          </a>
+          <a
+            class="flex items-center gap-2 px-3 py-2 rounded-md text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50 transition-colors"
+            href="#"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="w-5 h-5"
+            >
+              <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+            </svg>
+            Storage
+          </a>
+          <a
+            class="flex items-center gap-2 px-3 py-2 rounded-md text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50 transition-colors"
+            href="#"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="w-5 h-5"
+            >
+              <line x1="12" x2="12" y1="2" y2="22"></line>
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+            Billing
+          </a>
+          <a
+            class="flex items-center gap-2 px-3 py-2 rounded-md text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50 transition-colors"
+            href="#"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="w-5 h-5"
+            >
+              <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            Settings
+          </a>
+        </nav>
       </div>
     </div>
-  </aside>
-  <main class="w-full max-h-screen p-8 flex flex-col gap-8">
-    <div class="toolbar w-full">
-      <h2 class="text-lg text-gray-500">Collections / {collection.name}</h2>
-      <p class="text-gray-400 text-sm">{collection.description || ""}</p>
-    </div>
-    <div class="w-full h-12 flex items-center">
-      <input
-        type="text"
-        placeholder="Search Collection"
-        class="w-full h-full rounded-full bg-gray-200 px-8 text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-600 p-4"
-      />
-    </div>
-    <div class="w-full relative">
-      {#if collection.data.length > 0}
-        <div class="max-h-[80vh] overflow-y-scroll">
-          <table class="w-full table-auto">
-            <thead class="">
-              <tr class="border-b border-gray-200 h-16 w-full">
-                <th class="text-left text-gray-500 p-4">
-                  <input
-                    type="checkbox"
-                    class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                    on:click={() => {
-                      document
-                        .querySelectorAll('input[type="checkbox"]')
-                        .forEach((checkbox) => {
-                          if (checkbox !== event.target)
-                            checkbox.checked = !checkbox.checked;
-                        });
-                    }}
-                  />
-                </th>
-                {#each collection.fields as field}
-                  <th class="text-left text-gray-500 p-4">{field.name}</th>
-                {/each}
-              </tr>
-            </thead>
-            <tbody>
-              {#each collection.data as item}
-                <tr
-                  class="border-b border-gray-200 h-16 hover:bg-gray-100 w-full"
-                >
-                  <td class="text-left text-gray-900 p-4">
-                    <input
-                      type="checkbox"
-                      class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                    />
-                  </td>
-                  {#each Object.values(item) as value}
-                    <td class="text-left text-gray-900 p-4">{value}</td>
-                  {/each}
-                </tr>
-              {/each}
-            </tbody>
-          </table>
+    <main class="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 p-4 md:gap-8 md:p-10">
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div class="rounded-lg border bg-card text-card-foreground shadow-sm" data-v0-t="card">
+          <div class="space-y-1.5 p-6 flex flex-row items-center justify-between pb-2">
+            <h3 class="whitespace-nowrap tracking-tight text-sm font-medium">Total Users</h3>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="w-4 h-4 text-gray-500 dark:text-gray-400"
+            >
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <div class="p-6">
+            <div class="text-2xl font-bold">12,345</div>
+            <p class="text-xs text-gray-500 dark:text-gray-400">+5.2% from last month</p>
+          </div>
         </div>
-      {:else}
-        <div class="w-full h-1/2 flex flex-col items-center justify-center">
-          <h2 class="text-2xl text-gray-900">No Collection Found</h2>
-          <p class="text-gray-500">Create a new collection to get started</p>
-          <button class="px-4 py-2 text-white bg-primary rounded-lg mt-4"
-            >Create Collection</button
-          >
+        <div class="rounded-lg border bg-card text-card-foreground shadow-sm" data-v0-t="card">
+          <div class="space-y-1.5 p-6 flex flex-row items-center justify-between pb-2">
+            <h3 class="whitespace-nowrap tracking-tight text-sm font-medium">Active Users</h3>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="w-4 h-4 text-gray-500 dark:text-gray-400"
+            >
+              <path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"></path>
+            </svg>
+          </div>
+          <div class="p-6">
+            <div class="text-2xl font-bold">8,234</div>
+            <p class="text-xs text-gray-500 dark:text-gray-400">+3.1% from last month</p>
+          </div>
         </div>
-      {/if}
-    </div>
-  </main>
+        <div class="rounded-lg border bg-card text-card-foreground shadow-sm" data-v0-t="card">
+          <div class="space-y-1.5 p-6 flex flex-row items-center justify-between pb-2">
+            <h3 class="whitespace-nowrap tracking-tight text-sm font-medium">API Calls</h3>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="w-4 h-4 text-gray-500 dark:text-gray-400"
+            >
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+          </div>
+          <div class="p-6">
+            <div class="text-2xl font-bold">1.2M</div>
+            <p class="text-xs text-gray-500 dark:text-gray-400">+12% from last month</p>
+          </div>
+        </div>
+        <div class="rounded-lg border bg-card text-card-foreground shadow-sm" data-v0-t="card">
+          <div class="space-y-1.5 p-6 flex flex-row items-center justify-between pb-2">
+            <h3 class="whitespace-nowrap tracking-tight text-sm font-medium">Storage Used</h3>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="w-4 h-4 text-gray-500 dark:text-gray-400"
+            >
+              <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+              <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
+              <path d="M3 12A9 3 0 0 0 21 12"></path>
+            </svg>
+          </div>
+          <div class="p-6">
+            <div class="text-2xl font-bold">256GB</div>
+            <p class="text-xs text-gray-500 dark:text-gray-400">+8% from last month</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="rounded-lg border bg-card text-card-foreground shadow-sm" data-v0-t="card">
+          <div class="space-y-1.5 p-6 flex flex-row items-center justify-between pb-2">
+            <h3 class="whitespace-nowrap tracking-tight text-sm font-medium">Recent Activity</h3>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="w-4 h-4 text-gray-500 dark:text-gray-400"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+          <div class="p-6">
+            <div class="grid gap-4 text-sm">
+              <div class="flex items-center gap-2">
+                <div class="bg-gray-100 rounded-md flex items-center justify-center aspect-square w-10 md:w-12 dark:bg-gray-800">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="w-5 h-5"
+                  >
+                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                </div>
+                <div>
+                  <div class="font-medium">New User Registered</div>
+                  <div class="text-xs text-gray-500 dark:text-gray-400">2 hours ago</div>
+                </div>
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="bg-gray-100 rounded-md flex items-center justify-center aspect-square w-10 md:w-12 dark:bg-gray-800">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="w-5 h-5"
+                  >
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                  </svg>
+                </div>
+                <div>
+                  <div class="font-medium">New API Call Logged</div>
+                  <div class="text-xs text-gray-500 dark:text-gray-400">30 minutes ago</div>
+                </div>
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="bg-gray-100 rounded-md flex items-center justify-center aspect-square w-10 md:w-12 dark:bg-gray-800">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="w-5 h-5"
+                  >
+                    <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                    <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
+                    <path d="M3 12A9 3 0 0 0 21 12"></path>
+                  </svg>
+                </div>
+                <div>
+                  <div class="font-medium">Storage Limit Reached</div>
+                  <div class="text-xs text-gray-500 dark:text-gray-400">1 day ago</div>
+                </div>
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="bg-gray-100 rounded-md flex items-center justify-center aspect-square w-10 md:w-12 dark:bg-gray-800">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="w-5 h-5"
+                  >
+                    <circle cx="12" cy="13" r="8"></circle>
+                    <path d="M12 9v4l2 2"></path>
+                    <path d="M5 3 2 6"></path>
+                    <path d="m22 6-3-3"></path>
+                    <path d="M6.38 18.7 4 21"></path>
+                    <path d="M17.64 18.67 20 21"></path>
+                  </svg>
+                </div>
+                <div>
+                  <div class="font-medium">Scheduled Maintenance</div>
+                  <div class="text-xs text-gray-500 dark:text-gray-400">2 days ago</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
 </div>
-
-<style>
-  input[type="text"] {
-    background-image: url("../icons/search.svg");
-    background-repeat: no-repeat;
-    background-position: 0.5em 50%;
-    background-size: 1.2rem;
-  }
-</style>
